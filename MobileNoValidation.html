@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>  
+<body ng-app="">
+<form class="form-horizontal" role="form" method="post" name="registration" novalidate>
+    <div class="form-group" ng-class="{'has-error': registration.phone.$error.number}">
+        <label for="inputPhone" class="col-sm-3 control-label">Phone :</label>
+        <div class="col-sm-9">
+            <input type="text" 
+                   class="form-control" 
+                   ng-minlength="9" 
+                   ng-maxlength="12"  
+                   ng-pattern="/+27/0-9/"
+                   id="inputPhone" 
+                   name="phone" 
+                   placeholder="+27XXXXXXXX" 
+                   ng-model="user.phone"
+                   ng-required="true">
+            <span class="help-block" 
+                  ng-show="registration.phone.$error.required || 
+                           registration.phone.$error.number">
+                           Valid phone number is required
+            </span>
+            <span class="help-block" 
+                  ng-show="((registration.phone.$error.minlength ||
+                           registration.phone.$error.maxlength) && 
+                           registration.phone.$dirty) ">
+                           phone number should be 10 digits
+            </span>
+    </div>
+  </div>
+</form>
+</body>
+</html>
